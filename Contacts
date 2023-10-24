@@ -1,0 +1,60 @@
+#include <iostream>
+#include <map>
+
+int main() {
+    std::map<std::string, std::string> contacts;  // Using a map to store contacts (name -> phone number)
+
+    while (true) {
+        std::cout << "1. Add Contact\n";
+        std::cout << "2. Delete Contact\n";
+        std::cout << "3. Display Contacts\n";
+        std::cout << "4. Exit\n";
+        std::cout << "Enter your choice: ";
+        int choice;
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                std::string name, phoneNumber;
+                std::cout << "Enter the name: ";
+                std::cin >> name;
+                std::cout << "Enter the phone number: ";
+                std::cin >> phoneNumber;
+                contacts[name] = phoneNumber; // Add contact to the map
+                std::cout << "Contact added successfully!\n";
+                break;
+            }
+
+            case 2: {
+                std::string name;
+                std::cout << "Enter the name to delete: ";
+                std::cin >> name;
+                auto it = contacts.find(name);
+                if (it != contacts.end()) {
+                    contacts.erase(it); // Delete the contact
+                    std::cout << "Contact deleted successfully!\n";
+                } else {
+                    std::cout << "Contact not found.\n";
+                }
+                break;
+            }
+
+            case 3: {
+                std::cout << "Contacts:\n";
+                for (const auto& entry : contacts) {
+                    std::cout << "Name: " << entry.first << ", Phone Number: " << entry.second << "\n";
+                }
+                break;
+            }
+
+            case 4:
+                std::cout << "Exiting the program. Goodbye!\n";
+                return 0;
+
+            default:
+                std::cout << "Invalid choice. Please try again.\n";
+        }
+    }
+
+    return 0;
+}
