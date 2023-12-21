@@ -1,0 +1,221 @@
+#include <stdio.h>
+#include <iostream>
+#include <string>
+using namespace std;
+
+int Guess;
+int Total;
+
+//Class for Questions
+
+class Question{
+	private:
+		string Question;
+		string Choice_1;
+		string Choice_2;
+		string Choice_3;
+		string Choice_4;
+		
+		int Correct_Ans;
+		int Question_Score;
+		
+	public:
+		//Setter
+		void setValues(string, string, string, string, string, int, int);
+		
+		//Asking
+		void askQuestion();
+			
+};
+
+int main(){
+	cout<< "World of Warcraft Trivia Quiz"
+		<< endl;
+	cout<< "\nPress Enter to Start... "
+		<<endl;
+	
+	cin.get();
+	
+	string Name;
+	int Age;
+	
+	//Prompt #1
+	
+	cout<< "Enter your name: "
+		<<endl;
+	cin>> Name;
+	cout<<endl;
+	
+	cout<< "Enter your age: "
+		<<endl;
+	cin>>Age;
+	cout<<endl;
+	
+	string Respond;
+	cout<< "Type 'Ready' if you're ready to take the quiz!"
+		<<endl;
+	cin>>Respond;
+	
+	if(Respond == "Ready"){
+		cout<<endl;
+		cout<< "Have fun!";	
+	}else{
+		cout<< "Goodbye!";
+		return 0;
+	}
+	
+	Question q1;
+    Question q2;
+    Question q3;
+    Question q4;
+    Question q5;
+    Question q6;
+    Question q7;
+    Question q8;
+    Question q9;
+    Question q10;
+    
+    q1.setValues("Question 1 : What is 2+2x2?", "8",
+                 "6", "4",
+                 "10", 2, 10);
+    q2.setValues("Question 2 : What is Havoc Demon Hunter's biggest cooldown?'", "Immolation Aura",
+                 "Unbound Chaos", "Eye Beam",
+                 "Metamorphorsis", 4, 10);
+    q3.setValues("Question 3 : What energy resource does Paladins use?", "Sacred Power",
+                 "Divine Power", "Holy Power",
+                 "Sanctified Power", 3, 10);
+    q4.setValues("Question 4 : What is the name of the human capital city?", "Ironforge",
+                 "Stormwind City", "Booty Bay",
+                 "Silvermoon City", 2, 10);
+    q5.setValues("Question 5 : Which of these classes are available to Blood Elves?", "Warlock",
+                 "Priest", "Warrior",
+                 "All of the above", 4, 10);
+    q6.setValues("Question 6 : What is the Draenei racial heal called?", "Blessing of the Argus",
+                 "Velen's Touch'", "Symbol of Hope",
+                 "Gift of the Naaru", 4, 10);
+    q7.setValues("Question 7 : When a warlock summons their Dreadsteed, which world does it come from?", "The Twisting Nether",
+                 "Xoroth", "Nazrethim",
+                 "Argus", 2, 10);
+    q8.setValues("Question 8 : Which of the following class abilities changes your party's movement speed?", "Windfury Totem",
+                 "Crusader Aura", "Aspect of the Pack",
+                 "Sprint", 3, 10);
+    q9.setValues("Question 9 : Who said: 'Succeeding you, father.' ?", "Arthas Menethil",
+                 "Terenas Menethil", "Calia Menethil",
+                 "Lianne Menethil", 1, 10);
+    q10.setValues("LAST QUESTION! : Which is NOT a continent in the Eastern Kingdoms?", "Khaz Modan",
+                  "Azeroth", "Kalimdor",
+                  "Swamp of Sorrows", 3, 10);
+ 
+    q1.askQuestion();
+    q2.askQuestion();
+    q3.askQuestion();
+    q4.askQuestion();
+    q5.askQuestion();
+    q6.askQuestion();
+    q7.askQuestion();
+    q8.askQuestion();
+    q9.askQuestion();
+    q10.askQuestion();
+    
+    cout<< "Total Score: " << Total
+    	<< "/100" <<endl;
+    	
+    
+    if(Total>70){
+    	cout<<"Congratulations, "<<Name<<"! you passed!"<<endl;
+	}else{
+		cout<<"Sorry, "<<Name<<".Try again next time."<<endl;
+	}
+	return 0;
+}
+
+
+// Function to set the values of
+// the questions
+void Question::setValues(
+    string q, string a1,
+    string a2, string a3,
+    string a4, int ca, int pa)
+{
+    Question = q;
+    Choice_1 = a1;
+    Choice_2 = a2;
+    Choice_3 = a3;
+    Choice_4 = a4;
+    Correct_Ans = ca;
+    Question_Score = pa;
+}
+ 
+// Function to ask questions
+void Question::askQuestion()
+{
+    cout << endl;
+ 
+    // Print the questions
+    cout << Question << endl;
+    cout << "1. " << Choice_1 << endl;
+    cout << "2. " << Choice_2 << endl;
+    cout << "3. " << Choice_3 << endl;
+    cout << "4. " << Choice_4 << endl;
+    cout << endl;
+ 
+    // Display the answer
+    cout << "What is your answer?(in number)"
+         << endl;
+    cin >> Guess;
+ 
+    // If the answer is correct
+    if (Guess == Correct_Ans) {
+        cout << endl;
+        cout << "Correct!" << endl;
+ 
+        // Update the correct score
+        Total = Total + Question_Score;
+        cout << "Score = " << Question_Score
+             << "/"
+             << Question_Score
+             << "!" << endl;
+        cout << endl;
+    }
+ 
+    // Otherwise
+    else {
+        cout << endl;
+        cout << "Wrong!" << endl;
+        cout << "Score = 0"
+             << "/"
+             << Question_Score
+             << "!" << endl;
+        cout << "Correct answer = "
+             << Correct_Ans
+             << "." << endl;
+        cout << endl;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
